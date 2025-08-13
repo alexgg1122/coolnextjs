@@ -1,0 +1,109 @@
+
+<!doctype html>
+<!--[if lte IE 9]>
+<html lang="en" class="oldie">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="rfvZ22htqlhOPA1ItXoj8Vc02kGd-s5k3zJb--P_1QFUkThrYJs3tVaw7XRhoSfYyvMwI1NyG-wVfMMrUczfxQ" />
+
+  
+
+    <!--
+Copyright (c) 2025 by Techartist (https://codepen.io/VoXelo/pen/ByyBqVX)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+-->
+
+
+  <title>Interactive Three.js Particle Morph</title>
+
+  <link rel="stylesheet" href="https://cpwebassets.codepen.io/assets/fullpage/fullpage-3f5d2eba435c38fad3be0c972eb70c6c30f714f251dc2d2c8e6968c30ce359f4.css" />
+  <link rel="stylesheet" href="https://cpwebassets.codepen.io/assets/global/global-78ea36b1bd65a66c0ce07010e228f3e8d072d10b89848d1dd9d012b3c9f42629.css" media="all" />
+  <link rel="stylesheet" href="https://cpwebassets.codepen.io/assets/packs/css/everypage-40a47bda.css" />
+  <link rel="stylesheet" href="https://cpwebassets.codepen.io/assets/page/page-f0d7b495e63e1bc150e9d461c0ba20300ce8893aeb3cbf80995b95271e4720ae.css" media="all" />
+  <link rel="stylesheet" href="https://cpwebassets.codepen.io/assets/editor/editor-74e9b05132d1286c2791b1bfde8ed3c2f6517e22230829453b1c02fc6fe88b04.css" media="all" />
+
+  
+
+<style type="text/css">@font-face {font-family:Lato;font-style:normal;font-weight:400;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:400;src:url(/cf-fonts/s/lato/5.0.18/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:700;src:url(/cf-fonts/s/lato/5.0.18/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:700;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/700/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:900;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/900/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:900;src:url(/cf-fonts/s/lato/5.0.18/latin/900/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:400;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:400;src:url(/cf-fonts/s/lato/5.0.18/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:700;src:url(/cf-fonts/s/lato/5.0.18/latin/700/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:700;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/700/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:900;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/900/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:900;src:url(/cf-fonts/s/lato/5.0.18/latin/900/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}</style>
+      <meta name="twitter:title" content="Interactive Three.js Particle Morph">
+    <meta name="twitter:description" content="Vibe coded particle system with Google Gemini 2.5 Pro that morphs into different shapes while reacting to user input. Built with JavaScript and Three.j...">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://shots.codepen.io/username/pen/ByyBqVX-800.jpg?version=1744721792">
+
+
+    <meta property="og:image" content="https://shots.codepen.io/username/pen/ByyBqVX-800.jpg?version=1744721792" itemprop="thumbnailUrl">
+    <meta property="og:title" content="Interactive Three.js Particle Morph">
+    <meta property="og:url" content="https://codepen.io/VoXelo/details/ByyBqVX">
+    <meta property="og:description" content="Vibe coded particle system with Google Gemini 2.5 Pro that morphs into different shapes while reacting to user input. Built with JavaScript and Three.j...">
+
+
+  <link rel="alternate" type="application/json+oembed"
+  href="https://codepen.io/api/oembed?url=https%3A%2F%2Fcodepen.io%2FVoXelo%2Fpen%2FByyBqVX&format=json"
+  title="Interactive Three.js Particle Morph" />
+
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+</head>
+
+<body class="fullpage logged-out">
+
+  <header id="main-header" class="main-header"></header>
+
+  <div class="oldie-header">
+    <a href="https://codepen.io/VoXelo/pen/ByyBqVX?anon=true&amp;view=pen">Edit Pen</a>
+  </div>
+
+  <div id="result-iframe-wrap" role="main">
+
+    <iframe
+      id="result"
+      src="https://codepen.io/VoXelo/fullpage/ByyBqVX?anon=true&amp;view=fullpage"
+      sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="accelerometer *; bluetooth *; camera *; clipboard-read *; clipboard-write *; display-capture *; encrypted-media *; geolocation *; gyroscope *; language-detector *; language-model *; microphone *; midi *; rewriter *; serial *; summarizer *; translator *; web-share *; writer *; xr-spatial-tracking *" allowTransparency="true"
+      allowpaymentrequest="true" allowfullscreen="true" class="result-iframe" loading="lazy"></iframe>
+
+  </div>
+
+  <div id="pen-ad"></div>
+
+   <textarea id="init-data" style="display:none">{&quot;__browser&quot;:{&quot;country&quot;:&quot;HK&quot;,&quot;device&quot;:&quot;unknown_device&quot;,&quot;mobile&quot;:false,&quot;name&quot;:&quot;chrome&quot;,&quot;platform&quot;:&quot;mac&quot;,&quot;version&quot;:&quot;139&quot;},&quot;__constants&quot;:{},&quot;__CPDATA&quot;:{&quot;domain_iframe&quot;:&quot;https://cdpn.io&quot;,&quot;environment&quot;:&quot;production&quot;,&quot;host&quot;:&quot;codepen.io&quot;,&quot;iframe_allow&quot;:&quot;accelerometer *; bluetooth *; camera *; clipboard-read *; clipboard-write *; display-capture *; encrypted-media *; geolocation *; gyroscope *; language-detector *; language-model *; microphone *; midi *; rewriter *; serial *; summarizer *; translator *; web-share *; writer *; xr-spatial-tracking *&quot;,&quot;iframe_sandbox&quot;:&quot;allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation&quot;},&quot;__graphql&quot;:{&quot;data&quot;:{&quot;data&quot;:{&quot;sessionUser&quot;:{&quot;id&quot;:&quot;VoDkNZ&quot;,&quot;name&quot;:&quot;Captain Anonymous&quot;,&quot;title&quot;:&quot;Captain Anonymous&quot;,&quot;avatar&quot;:&quot;https://assets.codepen.io/t-1/user-default-avatar.jpg?format=auto&amp;version=0&quot;,&quot;currentContext&quot;:{&quot;id&quot;:&quot;VoDkNZ&quot;,&quot;title&quot;:&quot;Captain Anonymous&quot;,&quot;name&quot;:&quot;Captain Anonymous&quot;,&quot;avatar&quot;:&quot;https://assets.codepen.io/t-1/user-default-avatar.jpg?format=auto&amp;version=0&quot;,&quot;username&quot;:&quot;anon&quot;,&quot;__typename&quot;:&quot;User&quot;},&quot;currentTeamId&quot;:null,&quot;username&quot;:&quot;anon&quot;,&quot;admin&quot;:false,&quot;anon&quot;:true,&quot;pro&quot;:false,&quot;verified&quot;:false,&quot;featureFlags&quot;:[],&quot;teams&quot;:[],&quot;__typename&quot;:&quot;User&quot;}}},&quot;url&quot;:&quot;https://codepen.io/graphql&quot;,&quot;api&quot;:&quot;cprails&quot;},&quot;__user&quot;:{&quot;anon&quot;:true,&quot;base_url&quot;:&quot;/anon/&quot;,&quot;cohorts&quot;:[],&quot;current_team_hashid&quot;:null,&quot;current_team_id&quot;:0,&quot;hashid&quot;:&quot;VoDkNZ&quot;,&quot;id&quot;:1,&quot;itemType&quot;:&quot;user&quot;,&quot;name&quot;:&quot;Captain Anonymous&quot;,&quot;paid&quot;:false,&quot;tier&quot;:0,&quot;username&quot;:&quot;anon&quot;,&quot;created_at&quot;:null,&quot;email_verified&quot;:null,&quot;collections_count&quot;:0,&quot;collections_private_count&quot;:0,&quot;followers_count&quot;:0,&quot;followings_count&quot;:0,&quot;pens_count&quot;:0,&quot;pens_private_count&quot;:0,&quot;projects_count&quot;:0,&quot;projects_private_count&quot;:0},&quot;__firebase&quot;:{&quot;config&quot;:{&quot;apiKey&quot;:&quot;AIzaSyBgLAe7N_MdFpuVofMkcQLGwwhUu5tuxls&quot;,&quot;authDomain&quot;:&quot;codepen-store-production.firebaseapp.com&quot;,&quot;databaseURL&quot;:&quot;https://codepen-store-production.firebaseio.com&quot;,&quot;disabled&quot;:false,&quot;projectId&quot;:&quot;codepen-store-production&quot;},&quot;token&quot;:&quot;eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImNsYWltcyI6eyJvd25lcklkIjoiVm9Ea05aIiwiYWRtaW4iOmZhbHNlfSwiZXhwIjoxNzU1MDc2MjEwLCJpYXQiOjE3NTUwNzI2MTAsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLThva3lsQGNvZGVwZW4tc3RvcmUtcHJvZHVjdGlvbi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInN1YiI6ImZpcmViYXNlLWFkbWluc2RrLThva3lsQGNvZGVwZW4tc3RvcmUtcHJvZHVjdGlvbi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6IlZvRGtOWiJ9.lrQ5OacQI0o1-WaO4sbGinQGIBjtHyIHJzHeshhdO-Dch217Ksz7qjAybfMm7PzcXv4bVU4XbueZWwX0Whw86I_jKS3uXjGNOPqefj-hcNjSGzhCDrQKYa0NkteiWZUhUCTTsvzxKtoeZzmjM4VhyN8KTOYR_NDg84dycadSCOWZ29ngFkvI2ZApgmNVyBMp4dyUkMfVMLqpG3-WiROmEIg6WBEFQS3eFFSQwjIBp8jmGvBwEEffLZ4GC4t6v-HNtmJq2BS0mqd3gSOe66rcsstEY_YS7LeUXL7UE9_8JQL8E6yQxO_gAQiL0MYR1T8WHWy-2kMVvfypY8uLq947jQ&quot;},&quot;__pay_stripe_public_key&quot;:&quot;pk_live_2GndomDfiklqpSNQn8FrGuwZSMIMzha7DkLJqlYe7IR0ihKAlKdiHg68JJc5eVPt68rzAjzAAVXcUwjySHRCsgjQQ00gtRBUFNH&quot;,&quot;__pay_braintree_env&quot;:&quot;production&quot;,&quot;__item&quot;:&quot;{\&quot;id\&quot;:80669489,\&quot;hashid\&quot;:\&quot;ByyBqVX\&quot;,\&quot;itemType\&quot;:\&quot;pen\&quot;,\&quot;user_id\&quot;:10680127,\&quot;slug_hash\&quot;:\&quot;ByyBqVX\&quot;,\&quot;private\&quot;:false,\&quot;slug_hash_private\&quot;:\&quot;8aa0d1ba13d9e0d1ecd8571664dc4449\&quot;}&quot;,&quot;__profiled&quot;:{&quot;base_url&quot;:&quot;/VoXelo&quot;,&quot;hashid&quot;:&quot;WoXwox&quot;,&quot;id&quot;:10680127,&quot;name&quot;:&quot;Techartist&quot;,&quot;type&quot;:&quot;user&quot;,&quot;username&quot;:&quot;VoXelo&quot;},&quot;__pageType&quot;:&quot;full&quot;}</textarea>
+
+  <div id="popup-overlay" class="overlay popup-overlay"></div>
+  <div id="modal-overlay" class="overlay modal-overlay"></div>
+
+  <script src="https://cpwebassets.codepen.io/assets/common/everypage-c0439686246cf4a1465a9bf7bcc4b0a7a720b9724e1e14b3aa3bec47880049c4.js"></script>
+  <script src="https://cpwebassets.codepen.io/assets/packs/js/referrer-tracking-8440e82e2daf99a3d971.js"></script>
+
+
+  <script src="https://cpwebassets.codepen.io/assets/packs/js/vendor-fdb9d92a0b47852ce47b.chunk.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/packs/js/3-0e27e749c438569bf1e7.chunk.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/packs/js/everypage-bf440fb77b2b1e667d0b.js"></script>
+  <script src="https://cpwebassets.codepen.io/assets/editor/full/full_page_renderer-5c5f4d03e4aca2a97df9e03dfc8ed9d048628ec94b84fe63e060b0276d8862f7.js"></script>
+<script nonce="qciVIiLP9Tg=">(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.nonce='qciVIiLP9Tg=';d.innerHTML="window.__CF$cv$params={r:'96e6bc04bd01106e',t:'MTc1NTA3MjYxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='qciVIiLP9Tg=';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>
